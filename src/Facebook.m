@@ -17,7 +17,6 @@
 #import "Facebook.h"
 #import "FBLoginDialog.h"
 #import "FBRequest.h"
-#import "ThickFuzz.h"
 
 static NSString* kOAuthURL = @"https://www.facebook.com/dialog/oauth";
 static NSString* kFBAppAuthURL = @"fbauth://authorize";
@@ -548,9 +547,11 @@ static NSString* kSDKVersion = @"2";
 
 // JE:
 - (void)setAccessTokenFromWhere:(NSString *)token {
-	if ([token isNotBlank]) {
+	if (token != nil) {
 		self.accessToken = token;
 		hasExpirationProofAccessToken = YES;
+	}else {
+		[self clearAccessTokenFromWhere];
 	}
 }
 
