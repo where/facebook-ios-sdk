@@ -32,6 +32,9 @@
   FBRequest* _request;
   FBDialog* _loginDialog;
   FBDialog* _fbDialog;
+
+  // JE: Where specific stuff. We get the accessToken through our own OAuth controller, so we need a way to override the usual authentication
+  BOOL hasExpirationProofAccessToken;
   
 }
 
@@ -41,6 +44,9 @@
 
 @property(nonatomic, assign) id<FBSessionDelegate> sessionDelegate;
 
+// JE
+- (void)setAccessTokenFromWhere:(NSString *)token;
+- (void)clearAccessTokenFromWhere;
 
 - (void) authorize:(NSString*) application_id
        permissions:(NSArray*) permissions

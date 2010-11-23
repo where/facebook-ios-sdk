@@ -17,6 +17,7 @@
 #import "Facebook.h"
 #import "FBLoginDialog.h"
 #import "FBRequest.h"
+#import "ThickFuzz.h"
 
 static NSString* kOAuthURL = @"https://graph.facebook.com/oauth/authorize";
 static NSString* kRedirectURL = @"fbconnect://success";
@@ -383,13 +384,31 @@ static NSString* kSDKVersion = @"ios";
   [_fbDialog show];  
 }
 
+// JE:
+- (void)setAccessTokenFromWhere:(NSString *)token {
+	if ([token isNotBlank]) {
+		self.accessToken = token;
+		hasExpirationProofAccessToken = YES;
+	}
+}
+
+- (void)clearAccessTokenFromWhere {
+	self.accessToken = nil;
+	hasExpirationProofAccessToken = NO;
+}
+
 /**
  * @return boolean - whether this object has an non-expired session token
  */
 - (BOOL) isSessionValid {
+  // JE:
+  if (self.accessToken != nil && hasExpirationProofAccessToken) {
+    return YES;
+  }
   
-  return (self.accessToken != nil && self.expirationDate != nil 
-           && NSOrderedDescending == [self.expirationDate compare:[NSDate date]]); 
+  return (self.accessToken != nil &&
+		  self.expirationDate != nil &&
+		  NSOrderedDescending == [self.expirationDate compare:[NSDate date]]); 
 
 }
 
