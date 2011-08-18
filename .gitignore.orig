@@ -16,5 +16,9 @@ test/UnitTest/UnitTest.xcodeproj/*.mode*
 test/UnitTest/build/
 *~
 *#
+<<<<<<< HEAD
 src/.DS_Store
-.DS_Store.arcconfig
+.DS_Store
+=======
+.arcconfig
+>>>>>>> upstream/master

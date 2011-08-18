@@ -48,11 +48,14 @@
 
 - (id)initWithAppId:(NSString *)appId
         andDelegate:(id<FBSessionDelegate>)delegate;
+
+<<<<<<< HEAD
 // JE
 - (void)setAccessTokenFromWhere:(NSString *)token;
 - (void)clearAccessTokenFromWhere;
-
+=======
 - (void)authorize:(NSArray *)permissions;
+>>>>>>> upstream/master
 
 - (void)authorize:(NSArray *)permissions
        localAppId:(NSString *)localAppId;

@@ -21,8 +21,13 @@
 // Your Facebook APP Id must be set before running this example
 // See http://www.facebook.com/developers/createapp.php
 // Also, your application must bind to the fb[app_id]:// URL
+<<<<<<< HEAD
 // scheme (substitue [app_id] for your real Facebook app id).
 static NSString* kAppId = @"2231539416";
+=======
+// scheme (substitute [app_id] for your real Facebook app id).
+static NSString* kAppId = nil;
+>>>>>>> upstream/master
 
 @implementation DemoAppViewController
 
@@ -44,9 +49,13 @@ static NSString* kAppId = @"2231539416";
 
   if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
     _permissions =  [[NSArray arrayWithObjects:
+<<<<<<< HEAD
+                      @"read_stream", @"offline_access", @"publish_stream",nil] retain];
+=======
                       @"read_stream", @"publish_stream", @"offline_access",nil] retain];
     _facebook = [[Facebook alloc] initWithAppId:kAppId
                                     andDelegate:self];
+>>>>>>> upstream/master
   }
 
   return self;
